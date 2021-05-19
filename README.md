@@ -1,21 +1,13 @@
-# BusParkSpring
+# Емулятор зчитувача карточки автобусного парку на основі мікрокомпютера
 
-## Description
+## Опис
 
-Fleet system. Drivers and Administrators can log into the system. In the fleet there are buses, routes. The Administrator can assign free buses to the Routes, to buses of free Drivers, and also release them, making them free. The driver can see his place of work, and he must also confirm his new Appointment.
+Емулятор зчитувача карточки автобусного парку на основі мікрокомпютера. В системі існують ролі: драйвер та адміністратор, а також основні сутності автопарку - це автобуси та маршрути. При створенні нового автобусу, адміністратор за допомогою своєї id-карти повинен ідентифікувати особистість. Карт-рідер зчитує карту адміністратора та надає веб-серверу відповідь:
+  1) При позитивній валідації — автобус буде успішно добавлений, а також буде продемонстроване відповідне сповіщення
+  2) У разі провалу аутентифікації запис не буде добавлено у сховище даних і буде присутнє повідомлення про невдачу
+  Замість зчитувача безконтактних карт було використано файловий емулятор. Файловий емулятор зчитувача картки містить значення true/false, що відповідають підтвердженню/відхиленню права добавлення адміністратором автобусу. У випадку, коли ми отримаємо значення відмінне від true/false доступ буде відхилений. При початку роботи програмного забезпечення створюється файл емулятор зчитувача безконтактних карт із значенням false. При завершенні роботі даний файл буде видалено.
+  Допоміжний функціонал веб-сервісу: адміністратор може призначити вільні автобуси маршрутам, автобусам вільних драйверів, а також розпустити їх, зробивши їх вільними. Водій може бачити місце роботи, і він також повинен підтвердити своє нове призначення.
 
-## Instalation and running 
-### Prerequisites
-
-- JDK, JRE 8 or later
-- Spring
-- MySQL
-
-### Set up
-- Clone the project to local reposiroty and build project.
-- Change in application.properties spring.jpa.hibernate.ddl-auto=update. Then create database using entities.
-- Init database using insertDatabase.sql. 
-
-### Login data
+### Дані для входу
 - Admin - login: admin@gmail.com password: admin
---Driver - login: driver1@gmail.com password: driver
+- Driver - login: driver1@gmail.com password: driver
